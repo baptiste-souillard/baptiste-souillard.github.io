@@ -21,6 +21,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
+  /* Échelle : texte 16px, secondaire 14.4px (.9rem), UI Inter 14px / 12.5px.
+     Espacements : 2 · 4 · 8 · 12 · 24 · 32px. */
   :root{
     --bg:#fcfcfa; --fg:#1c1d21; --muted:#686a72; --accent:#1b2f5e; --line:#e6e4df;
     --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
@@ -31,63 +33,64 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-optical-sizing:none;font-variation-settings:"opsz" 30;letter-spacing:-.006em;
-       font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-optical-sizing:none;font-variation-settings:"opsz" 30;
+       letter-spacing:-.006em;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline;text-underline-offset:3px}
   a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  nav,.btns,summary,dt,footer{font-family:var(--sans);letter-spacing:0}
 
   /* Header */
   header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:10}
-  nav{max-width:860px;margin:0 auto;padding:12px 24px;display:flex;gap:22px;align-items:baseline;flex-wrap:wrap;
-      font-family:var(--sans);font-size:14px}
+  nav{max-width:860px;margin:0 auto;padding:12px 24px;display:flex;gap:22px;align-items:baseline;flex-wrap:wrap;font-size:14px}
   nav a{color:var(--muted)}
   nav a:hover{color:var(--fg);text-decoration:none}
-  nav .brand{font-family:var(--serif);font-weight:600;font-size:17px;margin-right:auto;color:var(--fg)}
+  nav .brand{font-family:var(--serif);letter-spacing:-.006em;font-weight:600;font-size:17px;margin-right:auto;color:var(--fg)}
 
-  main{max-width:860px;margin:0 auto;padding:0 24px 24px}
+  main{max-width:860px;margin:0 auto;padding:0 24px}
 
   /* Hero */
-  .hero{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:40px 0 4px}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding-top:40px}
   .hero img{width:200px;height:200px;border-radius:50%;object-fit:cover;background:var(--line)}
-  h1{font-size:2.4rem;font-weight:600;letter-spacing:-.015em;line-height:1.1;margin:0 0 6px}
-  .role{margin:0;color:var(--muted);font-size:1.05rem;line-height:1.5}
+  h1{font-size:2.4rem;font-weight:600;letter-spacing:-.015em;line-height:1.1;margin:0 0 8px}
+  .role{margin:0;color:var(--muted)}
   .role strong{color:var(--fg);font-weight:600}
-  .btns{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;font-family:var(--sans);font-size:14px;letter-spacing:0}
-  .btns a{border:1px solid var(--accent);border-radius:6px;padding:7px 14px}
+  .btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;font-size:14px}
+  .btns a{border:1px solid var(--accent);border-radius:6px;padding:7px 14px;line-height:1.4}
   .btns a.primary{background:var(--accent);color:var(--bg)}
   .btns a:hover{text-decoration:none;opacity:.85}
 
   /* Sections */
   section{padding-top:32px;scroll-margin-top:56px}
-  h2{font-size:1.55rem;font-weight:600;letter-spacing:-.01em;line-height:1.25;margin:0 0 10px}
-  h3{font-size:1.1rem;font-weight:400;font-style:italic;color:var(--muted);margin:22px 0 8px}
-  p{margin:0 0 10px}
+  h2{font-size:1.55rem;font-weight:600;letter-spacing:-.01em;line-height:1.25;margin:0 0 12px}
+  h3{font-size:1.1rem;font-weight:400;font-style:italic;color:var(--muted);line-height:1.4;margin:24px 0 8px}
+  h2 + h3{margin-top:0}
+  p{margin:0 0 12px}
   ul{padding-left:1.2em;margin:0}
-  li{margin-bottom:2px}
+  li{margin:0}
+  section > :last-child,.entry:last-child{margin-bottom:0}
 
-  /* Entries */
+  /* Entrées (publications, policy) */
   .entry{margin:0 0 12px}
-  .t{font-weight:600;color:var(--fg);line-height:1.4}
+  .t{display:block;font-weight:600;color:var(--fg);line-height:1.4}
   a.t{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .15s,color .15s}
   a.t:hover{color:var(--accent);text-decoration-color:var(--accent)}
-  .meta{margin:1px 0 0;font-size:.92rem;color:var(--muted);line-height:1.5}
-  .cov{margin:1px 0 0;font-size:.85rem;color:var(--muted);line-height:1.5}
-  .cov i{color:var(--fg);opacity:.8}
+  .meta,.cov{margin:2px 0 0;font-size:.9rem;line-height:1.5;color:var(--muted)}
 
-  details{margin-top:2px}
-  summary{cursor:pointer;list-style:none;display:inline-block;font-family:var(--sans);font-size:12.5px;color:var(--accent)}
+  details{margin-top:4px}
+  summary{cursor:pointer;list-style:none;display:block;width:fit-content;font-size:12.5px;line-height:1.5;color:var(--accent)}
   summary::-webkit-details-marker{display:none}
   summary::before{content:"▸";display:inline-block;margin-right:6px;transition:transform .15s}
   details[open] summary::before{transform:rotate(90deg)}
-  details p{margin:6px 0 4px;font-size:.95rem}
+  details p{margin:4px 0 0;font-size:.9rem;line-height:1.55}
 
   /* Contact */
-  dl{display:grid;grid-template-columns:110px 1fr;gap:4px 16px;margin:0}
-  dt{font-family:var(--sans);font-size:14px;color:var(--muted);padding-top:.2em}
+  dl{display:grid;grid-template-columns:110px 1fr;gap:4px 16px;align-items:baseline;margin:0}
+  dt{font-size:14px;color:var(--muted)}
   dd{margin:0}
 
-  footer{max-width:860px;margin:0 auto;padding:24px 24px 36px;font-family:var(--sans);font-size:12.5px;color:var(--muted);
+  /* Footer */
+  footer{max-width:860px;margin:0 auto;padding:40px 24px;font-size:12.5px;color:var(--muted);
          display:flex;align-items:center;gap:16px}
   footer p{margin:0;line-height:1.5}
   footer .mark{flex:none;display:block;line-height:0;border-radius:50%}
@@ -95,8 +98,11 @@
   footer .mark:hover img{opacity:.75}
 
   @media (max-width:560px){
-    body{font-size:16px}
-    .hero{grid-template-columns:1fr;gap:16px;padding-top:28px}
+    nav{gap:6px 16px;padding:10px 24px}
+    nav .brand{flex-basis:100%}
+    nav .nav-cv{display:none}
+    section{scroll-margin-top:84px}
+    .hero{grid-template-columns:1fr;gap:16px;padding-top:24px}
     .hero img{width:150px;height:150px}
     h1{font-size:2.1rem}
     dl{grid-template-columns:90px 1fr}
@@ -116,7 +122,7 @@
     <a href="#research">Research</a>
     <a href="#policy">Policy &amp; media</a>
     <a href="#contact">Contact</a>
-    <a href="https://github.com/baptiste-souillard/baptiste-souillard.github.io/blob/main/Resume%20Baptiste%20Souillard.pdf?raw=true">Resume</a>
+    <a class="nav-cv" href="https://github.com/baptiste-souillard/baptiste-souillard.github.io/blob/main/Resume%20Baptiste%20Souillard.pdf?raw=true">Resume</a>
   </nav>
 </header>
 
@@ -127,7 +133,7 @@
   <div>
     <h1>Baptiste Souillard</h1>
     <p class="role"><strong>Senior Economist</strong>, Chief Economist Team<br>Belgian Competition Authority</p>
-    <p class="role">PhD in Economics, ULB · Eng in Statistics, ENSAE Paris</p>
+    <p class="role">PhD in Economics, ULB · Eng in Statistics, ENSAE&nbsp;Paris</p>
     <div class="btns">
       <a class="primary" href="https://github.com/baptiste-souillard/baptiste-souillard.github.io/blob/main/Resume%20Baptiste%20Souillard.pdf?raw=true">Resume</a>
       <a href="mailto:baptiste.souillard@bma-abc.be">Email</a>
@@ -307,7 +313,7 @@
 
   <div class="entry">
     <div>
-      <a class="t" href="https://www.cae-eco.fr/staticfiles/pdf/cae-focus038.pdf">Quel Reporting Pays par Pays pour les Futures Réformes ?</a>
+      <a class="t" href="https://www.cae-eco.fr/staticfiles/pdf/cae-focus038.pdf">Quel Reporting Pays par Pays pour les Futures Réformes&#8239;?</a>
       <p class="meta"><i>Focus du Conseil d’Analyse Économique</i>, with S. Delpeuch, S. Laffitte, M. Parenti, H. Paris, and F. Toubal</p>
     </div>
   </div>
